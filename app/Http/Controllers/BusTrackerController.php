@@ -2,25 +2,25 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bus; 
 use Illuminate\Http\Request;
 
-class BusTrackerController extends Controller
-{
-    // Show the main tracking map/list
+class BusTrackerController extends Controller {
+    
     public function index() {
-        $buses = Bus::all();
+
+        $buses = Bus::all(); 
+
+
         return view('tracker.index', compact('buses'));
     }
 
-    // API endpoint for real-time location updates
     public function updateLocation(Request $request, $id) {
         $bus = Bus::findOrFail($id);
         $bus->update([
             'latitude' => $request->lat,
             'longitude' => $request->lng
         ]);
-
-        return response()->json(['message' => 'Location updated successfully']);
-}
-
+        return response()->json(['message' => 'Location updated']);
+    }
 }

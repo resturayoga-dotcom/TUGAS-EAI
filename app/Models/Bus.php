@@ -2,24 +2,19 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bus extends Model
-{
-  use HasFactory;
+class Bus extends Model {
+    use HasFactory;
 
-  protected $fillable = [
-    'bus_number',
-    'route_name',
-    'latitude',
-    'longtitude',
-    'status'
-  ];
+    protected $table = 'buses';
 
-
-  // Accessor for a readable location string
-    public function getCoordinatesAttribute() {
-        return "{$this->latitude}, {$this->longitude}";
-}
-
+    protected $fillable = [
+        'bus_number', 
+        'route_name', 
+        'latitude', 
+        'longitude', 
+        'status'
+    ];
 }
