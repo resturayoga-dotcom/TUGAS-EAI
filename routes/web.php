@@ -1,9 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\BusController;
+use App\Http\Controllers\BusTrackerController;
 
-Route::get('/buses', [BusController::class, 'index']);
-Route::get('/', function () {
-    return view('welcome');
-});
+
+Route::get('/', [BusTrackerController::class, 'index'])->name('tracker.index');
+
+Route::post('/bus/update/{id}', [BusTrackerController::class, 'updateLocation']);
+
